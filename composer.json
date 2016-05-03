@@ -26,7 +26,7 @@
         "sonata-project/user-bundle": "2.2.*",
         "sonata-project/easy-extends-bundle": "~2.1@dev",
         "sonata-project/media-bundle": "~2.3",
-        "gedmo/doctrine-extensions": "2.2.*"
+        "gedmo/doctrine-extensions": "2.4.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
