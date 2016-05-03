@@ -1,0 +1,94 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends "ApplicationSonataUserBundle:Profile:action.html.twig" %}
+
+
+
+{% block sonata_profile_title %}
+    {{ "title_user_account" | trans({}, 'SonataUserBundle')}} - {{ "title_user_edit_profile" | trans({}, 'SonataUserBundle')}}
+{% endblock %}
+
+{% block sonata_profile_content %}
+    {{ form_errors(form) }}
+    {% form_theme form '@KreactiveOrientationBackOffice/Form/form_inline.html.twig' %}
+    {% macro widget_prototype(widget, remove_text) %}
+        {% if widget.vars.prototype is defined %}
+            {% set form = widget.vars.prototype %}
+            {% set name = widget.vars.prototype.vars.name %}
+        {% else %}
+            {% set form = widget %}
+            {% set name = widget.vars.full_name %}
+        {% endif %}
+
+        <div class="row" data-content="{{  name }}">
+            {{ form_widget(form) }}
+            <a class="btn-remove btn btn-danger col-xs-3" data-related="{{ name  }}">{{ remove_text }}</a>
+
+        </div>
+    {% endmacro %}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ "title_user_account" | trans({}, 'SonataUserBundle')}}</h3>
+        </div>
+        <div class="panel-body">
+            <form action="{{ path('sonata_user_profile_edit') }}" method="POST" class="col-xs-12 form-horizontal">
+                {{ form_row(form.mailNotification) }}
+                {{ form_row(form.notificationType) }}
+                <div id="post_mails" data-prototype="{{ _self.widget_prototype(form.notificationMails, 'bo.user.notification.remove' | trans)|escape }}">
+                    {% for widget in form.notificationMails.children %}
+                        {{ _self.widget_prototype(widget, 'bo.user.notification.remove'| trans) }}
+                    {% endfor %}
+                </div>
+                <div class="clear-fix"></div>
+                <br>
+                <a href="#" data-target="post_mails" class="btn-add btn btn-warning">{{ 'bo.user.notification.add' | trans }}</a>
+                <br>
+                <br>
+                <div class="form-actions">
+                    <a class="btn btn-default" href="{{ path('sonata_user_profile_show') }}">{{ 'bo.user.profile.edit.abort' | trans }}</a>
+                    <button type="submit" name="submit"  class="btn btn-primary pull-right">{{ 'sonata_user_submit'|trans({}, 'SonataUserBundle') }}</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // keep track of how many email fields have been rendered
+        var emailCount = '{{ form.notificationMails|length }}';
+
+        jQuery(function($) {
+            $(document).on('click', '.btn-add[data-target]', function(event) {
+                var collectionHolder = $('#' + $(this).attr('data-target'));
+
+                if (!collectionHolder.attr('data-counter')) {
+                    collectionHolder.attr('data-counter', collectionHolder.children().length);
+                }
+
+                var prototype = collectionHolder.attr('data-prototype');
+                var form = prototype.replace(/__name__/g, collectionHolder.attr('data-counter'));
+
+                collectionHolder.attr('data-counter', Number(collectionHolder.attr('data-counter')) + 1);
+                collectionHolder.append(form);
+
+                event && event.preventDefault();
+            });
+
+            $(document).on('click', '.btn-remove[data-related]', function(event) {
+//                var name = $(this).attr('data-related');
+//                $('*[data-content="'+name+'"]').remove();
+                $(this).parent().remove();
+                event && event.preventDefault();
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% form_theme form 'SonataAdminBundle:Form:form_admin_fields.html.twig' %}
+
+<form role="form" action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
+    {{ form_widget(form) }}
+    <div  class="form-group">
+        <input  class="btn btn-default" type="submit" value="{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}" />
+    </div>
+</form>

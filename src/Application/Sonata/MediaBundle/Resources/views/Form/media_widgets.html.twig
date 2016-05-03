@@ -1,0 +1,46 @@
+{#
+    this template is an special template for the bo.(just shorten it).
+#}
+{% block sonata_media_type_widget %}
+    <div class="row media">
+        <div class="col-md-4">
+            <div class="row">
+                {% if value is not empty and value.providerReference %}
+                    <div class="col-md-6">
+                        {% thumbnail value, 'admin' with {'class': 'img-polaroid media-object'} %}
+                    </div>
+                    <div class="col-md-6">
+                        {#
+                            the value.id == null if you add a new image and the size is not suitable for our validator.
+                            and as we are admin, we will get an exception for this parameter. cause it should not be null
+                            for the path.
+                        #}
+                        {% if sonata_admin_enabled is defined and sonata_admin_enabled and value.id is not null %}
+                            <a href="{{ url('admin_sonata_media_media_edit', {id: value.id}) }}"><strong>{{ value.name }}</strong></a>
+                        {% else %}
+                            <strong>{{ value.name }}</strong>
+                        {% endif %}
+                        <br/>
+                        <span type="label">{{ value.providerName|trans({}, 'SonataMediaBundle') }}</span>
+                        ~ {{ value.context }}
+                    </div>
+                {% else %}
+                    <div class="col-md-6">
+                        <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="img-polaroid media-object"
+                             style="width: 85px; height: 85px"/>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>{{ 'no_linked_media'|trans({}, 'SonataMediaBundle') }}</strong> <br/>
+                        <span type="label">{{ form.vars['provider']|trans({}, 'SonataMediaBundle') }}
+                            ~ {{ form.vars['context']|trans({}, 'SonataMediaBundle') }}</span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            {{ 'link_media'|trans({}, 'SonataMediaBundle') }}
+            {{ form_row(form.binaryContent) }}
+        </div>
+    </div>
+{% endblock sonata_media_type_widget %}
