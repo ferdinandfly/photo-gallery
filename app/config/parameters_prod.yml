@@ -3,7 +3,7 @@ parameters:
     database_host: 127.0.0.1
     database_port: null
     database_name: photo_gallery
-    database_user: sfere
+    database_user: gallery
     database_password: kxkvi1
     mailer_transport: smtp
     mailer_host: 127.0.0.1
