@@ -1,0 +1,352 @@
+.popularity{
+  line-height: 25px;
+  >div{
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+}
+.blue-link{
+  a{
+    color: $blue;
+    font-weight: 700;
+    text-decoration: underline;
+    font-size: 17px;
+  }
+  &.left{
+    text-align: left;
+  }
+  &.right{
+    text-align: right;
+  }
+}
+.pointer_diagram{
+  .sprite-logo{
+    margin: 10px 0 0 10px;
+  }
+  position: relative;
+  .left-quotation{
+    font-weight: bold;
+    color: $grey_light;
+    font-size: 5em;
+    display: inline-block;
+    position: absolute;
+    top: -6px;
+  }
+  .description{
+    border-top: 1px solid $grey_light;
+    border-bottom: 1px solid $grey_light;
+    padding: 15px;
+  }
+  .right-quotation{
+    font-weight: bold;
+    color: $grey_light;
+    font-size: 5em;
+    display: inline-block;
+    position: absolute;
+    top: 11px;
+    right: 22px;
+  }
+}
+.ajax-navigation{
+  padding-top: 20px;
+  .pagination > li{
+    &.active{
+     >span{
+       &,
+       &:hover,
+       &:focus {
+         color: $pagination-active-color;
+         background-color: $grey-paging;
+       }
+     }
+    }
+    > a, > span {
+      margin: 0 10px;
+      @media (max-width: $screen-xs) {
+        margin: 0;
+      }
+      font-weight: 500;
+      border: none;
+      color: $grey-dark;
+    }
+  }
+}
+
+.stripped_table_container{
+  table{
+    @extend .table;
+    @extend .table-striped;
+  }
+}
+
+.vertical_align_middle{
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+  height: 100%;
+}
+
+.absolute_middle{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+.absolute_center{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+}
+
+.absolute_middle_center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%,-50%);
+}
+
+.row-table{
+  display: table;
+  [class*="span"]{
+    display: table-cell;
+    margin:0
+  }
+  .span4{
+    width: 33%;
+  }
+  .span8{
+    width: 66.6%;
+  }
+}
+
+.line-text {
+  width: 95%;
+  margin: auto;
+  text-align: center;
+  overflow: hidden;
+  font-size: 26px;
+  color: currentColor;
+  >span ,>h4, >h3{
+    display: inline-block;
+    padding: 0 15px;
+    position: relative;
+    &:before, &:after {
+      background: currentColor;
+      content: "";
+      display: block;
+      height: 1px;
+      position: absolute;
+      top: 50%;
+      width: 2000%;
+    }
+    &:before {
+      right: 100%;
+    }
+    &:after {
+      left: 100%;
+    }
+  }
+}
+.ellipsis-x-rows{
+  display: block;
+}
+.tagged-block {
+  &.fixed-height{
+    height: 150px;
+  }
+  .ellipsis-x-rows {
+    @extend .black-link;
+  }
+  position: relative;
+  vertical-align: top;
+  margin-top: 25px;
+  padding: 5px;
+  border-top: 3px solid $blue;
+  .separator {
+    @include k_separator(1px, 32px, $grey);
+  }
+  .btn{
+    display: block;
+    margin: 10px auto 20px;
+  }
+}
+
+.tags {
+  .tag_purple {
+    @include tag($tag_purple);
+  }
+  .tag_yellow {
+    @include tag($tag_yellow);
+  }
+  .tag_green {
+    @include tag($tag_green);
+  }
+  .tag_gray {
+    @include tag($grey);
+  }
+  .tag_blue {
+    @include tag($blue);
+  }
+}
+
+.k_image_container_up_corner_6{
+  border-radius: 12px 12px 0 0;
+  background-color: white;
+  overflow: hidden;
+  img{
+    border-radius: 12px 12px 0 0;
+    width: 100%;
+  }
+}
+
+.block{
+  border-top: 1px solid $grey_light;
+  border-right: 1px solid $grey_light;
+  border-left: 1px solid $grey_light;
+  border-bottom: 3px solid $grey_light;
+  margin-bottom: 20px;
+  @include border_radius(5px, 5px, 5px, 5px);
+}
+
+.block_with_image{
+  @extend .block;
+  overflow: hidden;
+  &, h4, h4 > a{
+    transition: all 0.5s ease;
+  }
+  &:hover{
+    border-color: $blue;
+    h4, h4 > a{
+      color: $blue;
+    }
+  }
+  .inner-resume{
+    padding: 10px 10px 10px 0;
+    @include box_sizing;
+  }
+  .content{
+    padding: 10px;
+    @include box_sizing;
+  }
+  .popup_video{
+    display: block;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+  }
+  .top_image{
+    img{
+      @include border_radius(5px, 5px, 0, 0);
+      width: 100%;
+    }
+    height: 120px;
+    overflow: hidden;
+  }
+}
+
+.right-spaced {
+  margin-right: $margin-right-inline;
+  .pointer_diagram {
+    .sprite-logo {
+      margin: 10px 0 0 10px;
+    }
+    position: relative;
+    .left-quotation {
+      font-weight: bold;
+      color: $grey_light;
+      font-size: 5em;
+      display: inline-block;
+      position: absolute;
+      top: -10px;
+    }
+    .description {
+      border-top: 1px solid $grey_light;
+      border-bottom: 1px solid $grey_light;
+      padding: 15px;
+    }
+    .right-quotation {
+      font-weight: bold;
+      color: $grey_light;
+      font-size: 5em;
+      display: inline-block;
+      position: absolute;
+      top: 10px;
+      right: 22px;
+    }
+  }
+}
+
+.alert ul {
+  margin-bottom: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.k-bottom-arrow{
+  &:after{
+    content: "";
+    display: block;
+    height: 17px;
+    position: relative;
+    margin-bottom: -17x;
+    background: url("/bundles/kreactiveorientation/images/header_pointe.png") no-repeat center center white;
+  }
+}
+.list-logo{
+  >div{
+    width: 19%;
+    display: inline-block;
+    border: 2px solid  #E9E8E8;
+    vertical-align: top;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    &:hover{
+      border: 2px solid $blue;
+      >div{
+        color: #fff;
+        background-color: $blue;
+      }
+    }
+    >div{
+      background-color: #E9E8E8;
+      color: $blue;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: 2px 5px;
+    }
+    img{
+      width: 100%;
+    }
+  }
+}
+
+.k-4-columns-logo{
+  padding-top: 20px;
+  text-align: center;
+  img{
+    max-width:100%;
+    max-height: 100%;
+  }
+  .logo{
+    width: 77px;
+    margin: 0 auto 10px;
+    height: 77px;
+  }
+}
+
+.list-simple-logo{
+  img {
+    max-width: 90%;
+    height: auto;
+  }
+  padding: $padding-large-horizontal 30px 0;
+}

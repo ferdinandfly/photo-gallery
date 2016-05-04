@@ -1,0 +1,22 @@
+$icons: sprite-map("icon/*.png");
+
+.icon {
+  background-image: sprite-url($icons);
+  background-repeat: no-repeat;
+  //  padding: 0px 20px 0px 20px;
+  //  margin-bottom: 5px;
+  //  height: 16px;
+  //  float: left;
+  //  list-style-type: none;
+  display: inline-block;
+  &.close-white {
+    background-position: sprite-position($icons, "close-white");
+    width: sprite-width($icons, "close-white");
+    height: sprite-height($icons, "close-white");
+  }
+  &.close-black {
+    background-position: sprite-position($icons, "close-black");
+    width: sprite-width($icons, "close-black");
+    height: sprite-height($icons, "close-black");
+  }
+}

@@ -21,7 +21,7 @@ class Media extends BaseMedia
      * @var string $createdBy
      *
      * @Gedmo\Blameable(on="create")
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      */
     protected $createdBy;
 
@@ -36,10 +36,8 @@ class Media extends BaseMedia
     }
 
     /**
-     * Set createdBy
-     *
-     * @param string $createdBy
-     * @return Institute
+     * @param $createdBy
+     * @return $this
      */
     public function setCreatedBy($createdBy)
     {

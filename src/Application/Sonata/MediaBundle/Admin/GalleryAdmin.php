@@ -41,12 +41,86 @@ class GalleryAdmin extends Admin
     /**
      * {@inheritdoc}
      */
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        // define group zoning
+        $formMapper
+            ->with($this->trans('Gallery'), array('class' => 'col-md-9'))->end()
+            ->with($this->trans('Options'), array('class' => 'col-md-3'))->end()
+        ;
+
+        $context = $this->getPersistentParameter('context');
+
+        if (!$context) {
+            $context = $this->pool->getDefaultContext();
+        }
+
+        $formats = array();
+        foreach ((array) $this->pool->getFormatNamesByContext($context) as $name => $options) {
+            $formats[$name] = $name;
+        }
+
+        $contexts = array();
+        foreach ((array) $this->pool->getContexts() as $contextItem => $format) {
+            $contexts[$contextItem] = $contextItem;
+        }
+
+        $formMapper
+            ->with('Options')
+            ->add('context', 'sonata_type_translatable_choice', array(
+                'choices'   => $contexts,
+                'catalogue' => 'SonataMediaBundle',
+            ))
+            ->add('enabled', null, array('required' => false))
+            ->add('name')
+            ->add('slug','text')
+            ->add('defaultFormat', 'choice', array('choices' => $formats))
+            ->end()
+            ->with('Gallery')
+            ->add('galleryHasMedias', 'sonata_type_collection', array(
+                'cascade_validation' => true,
+            ), array(
+                    'edit'              => 'inline',
+                    'inline'            => 'table',
+                    'sortable'          => 'position',
+                    'link_parameters'   => array('context' => $context),
+                    'admin_code'        => 'sonata.media.admin.gallery_has_media',
+                )
+            )
+            ->end()
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureListFields(ListMapper $listMapper)
+    {
+        $listMapper
+            ->addIdentifier('name')
+            ->add('enabled', 'boolean', array('editable' => true))
+            ->add('context', 'trans', array('catalogue' => 'SonataMediaBundle'))
+            ->add('defaultFormat', 'trans', array('catalogue' => 'SonataMediaBundle'))
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('name')
+            ->add('enabled')
+            ->add('context')
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function prePersist($gallery)
     {
-        $securityContext = $this->getConfigurationPool()->getContainer()->get('security.context');
-        if ($securityContext->isGranted('ROLE_ADMIN') && !$securityContext->isGranted('ROLE_SUPER_ADMIN')) {
-            $gallery->setCreatedBy($securityContext->getToken()->getUser());
-        }
         $parameters = $this->getPersistentParameters();
 
         $gallery->setContext($parameters['context']);
@@ -90,92 +164,5 @@ class GalleryAdmin extends Admin
         }
 
         return $gallery;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function createQuery($context = 'list')
-    {
-        $query = parent::createQuery($context);
-        $securityContext = $this->getConfigurationPool()->getContainer()->get('security.context');
-        if ($securityContext->isGranted('ROLE_ADMIN') && !$securityContext->isGranted('ROLE_SUPER_ADMIN')) {
-            $username = $securityContext->getToken()->getUser()->getUsername();
-            $query->andWhere($query->getRootAlias().'.createdBy = :username');
-            $query->setParameter('username', $username); // eg get from security context
-        }
-
-        return $query;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function configureFormFields(FormMapper $formMapper)
-    {
-        $context = $this->getPersistentParameter('context');
-
-        if (!$context) {
-            $context = $this->pool->getDefaultContext();
-        }
-
-        $formats = array();
-        foreach ((array) $this->pool->getFormatNamesByContext($context) as $name => $options) {
-            $formats[$name] = $name;
-        }
-
-        $contexts = array();
-        foreach ((array) $this->pool->getContexts() as $contextItem => $format) {
-            $contexts[$contextItem] = $contextItem;
-        }
-
-        $formMapper
-            ->add('context', 'sonata_type_translatable_choice', array(
-                'choices' => $contexts,
-                'catalogue' => 'SonataMediaBundle',
-            ))
-            ->add('enabled', null, array('required' => false))
-            ->add('name')
-            ->add('defaultFormat', 'choice', array('choices' => $formats))
-            ->add(
-                'galleryHasMedias',
-                'sonata_type_collection',
-                array(
-                    'cascade_validation' => true,
-                ),
-                array(
-                    'edit'              => 'inline',
-                    'inline'            => 'table',
-                    'sortable'          => 'position',
-                    'link_parameters'   => array('context' => $context),
-                    'admin_code'        => 'sonata.media.admin.gallery_has_media',
-                )
-            )
-        ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function configureListFields(ListMapper $listMapper)
-    {
-        $listMapper
-            ->addIdentifier('name')
-            ->add('enabled', 'boolean', array('editable' => true))
-            ->add('context', 'trans', array('catalogue' => 'SonataMediaBundle'))
-            ->add('defaultFormat', 'trans', array('catalogue' => 'SonataMediaBundle'))
-        ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('name')
-            ->add('enabled')
-            ->add('context')
-        ;
     }
 }

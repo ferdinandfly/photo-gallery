@@ -40,7 +40,4 @@ class MediaAdminController  extends BaseController
         return new JsonResponse($data, $status, $headers);
     }
 
-    public function createAction(){
-        return parent::createAction();
-    }
 }

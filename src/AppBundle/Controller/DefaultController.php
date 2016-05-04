@@ -2,20 +2,32 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 
 class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
+     * @Cache(maxage="6000",public="true")
+     * @Template()
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        ));
+        $galleries = $this->getDoctrine()->getManager()->getRepository('ApplicationSonataMediaBundle:Gallery')->findAll();
+        return array("galleries" => $galleries);
+    }
+    /**
+     * @Route("/gallery/{slug}", name="app_gallery", requirements={"slug" = "[0-9a-z\-]+"})
+     * @Cache(maxage="6000",public="true")
+     * @Template()
+     */
+    public function galleryAction($slug)
+    {
+        $gallery = $this->getDoctrine()->getManager()->getRepository('ApplicationSonataMediaBundle:Gallery')->findOneBySlut($slug);
+        return array("gallery" => $gallery);
     }
 }

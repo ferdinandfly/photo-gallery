@@ -1,0 +1,100 @@
+@font-face {
+    font-family: 'icomoon-small';
+    src:url('../fonts/icomoon-small.eot?ezfhj2');
+    src:url('../fonts/icomoon-small.eot?#iefixezfhj2') format('embedded-opentype'),
+        url('../fonts/icomoon-small.woff?ezfhj2') format('woff'),
+        url('../fonts/icomoon-small.ttf?ezfhj2') format('truetype'),
+        url('../fonts/icomoon-small.svg?ezfhj2#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icons-small-"], [class*=" icons-small-"] {
+    font-family: 'icomoon-small';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    font-size: 18px;
+    vertical-align: text-top;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icons-small-enveloppe:before {
+    content: "\e600";
+}
+.icons-small-link:before {
+    content: "\e601";
+}
+.icons-small-map-marker:before {
+    content: "\e602";
+}
+.icons-small-mobile:before {
+    content: "\e603";
+}
+.icons-small-phone:before {
+    content: "\e604";
+}
+.icons-small-plus:before {
+    content: "\e605";
+}
+.icons-small-times:before {
+    content: "\e606";
+}
+.icons-small-chapeau:before {
+  content: "\e607";
+}
+
+@font-face {
+    font-family: 'icomoon-medium';
+    src:url('../fonts/icomoon-medium.eot?-ufhhlh');
+    src:url('../fonts/icomoon-medium.eot?#iefix-ufhhlh') format('embedded-opentype'),
+        url('../fonts/icomoon-medium.woff?-ufhhlh') format('woff'),
+        url('../fonts/icomoon-medium.ttf?-ufhhlh') format('truetype'),
+        url('../fonts/icomoon-medium.svg?-ufhhlh#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+  font-family: 'icomoon-medium';
+  src:url('../fonts/icomoon-medium.eot?b0787n');
+  src:url('../fonts/icomoon-medium.eot?#iefixb0787n') format('embedded-opentype'),
+  url('../fonts/icomoon-medium.woff?b0787n') format('woff'),
+  url('../fonts/icomoon-medium.ttf?b0787n') format('truetype'),
+  url('../fonts/icomoon-medium.svg?b0787n#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icons-medium-"], [class*=" icons-medium-"] {
+    font-family: 'icomoon-medium';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    font-size: 24px;
+    vertical-align: text-top;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icons-medium-mobile:before {
+    content: "\e600";
+}
+.icons-medium-pdf:before {
+    content: "\e601";
+}
+.icons-medium-etablissement:before {
+  content: "\e602";
+}
+.icons-medium-recontacter:before {
+  content: "\e603";
+}

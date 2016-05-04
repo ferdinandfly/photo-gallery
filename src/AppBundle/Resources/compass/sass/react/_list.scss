@@ -1,0 +1,110 @@
+//#map-container{
+//  -webkit-transition: width 1s ease-in-out;
+//  -moz-transition: width 1s ease-in-out;
+//  -o-transition: width 1s ease-in-out;
+//  transition: width 1s ease-in-out;
+//  float: right;
+//}
+#react_map{
+  height:100%;
+  width: 100%;
+  min-height: 700px;
+}
+.react-list{
+  background-color: $grey_bg;
+  .premium-logo{
+    width: 150px;
+    padding: 20px 20px 20px 30px
+  }
+  .list-container{
+    height: 100%;
+    padding-bottom: 0;
+    .main{
+
+      padding-right: 7px;
+    }
+  }
+  .resume{
+    background-color: $white;
+    &.focused{
+      @include k_resume($k_red);
+    }
+  }
+  .institute_formation, .institute{
+    @extend .col-md-6;
+    .main {
+      @media (min-width: $screen-md) {
+        height: 570px;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+    }
+  }
+}
+
+.list-map{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.list-map-expand{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+}
+
+
+#react_main{
+  .horizontal-filter .filter-name{
+    padding: 12px 10px 8px;
+  }
+}
+
+.filter-hint-container{
+  margin-top: 30px;
+  overflow-y: inherit !important;
+  &:before{
+    content: " ";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 30px 30px 30px;
+    border-color:  transparent  transparent $grey-hint transparent;
+    display:block;
+    top: -20px;
+    left: 15px;
+    position: absolute;
+  }
+}
+
+.filter-hint{
+  background-color:$grey-hint;
+  color: white;
+  padding: 30px;
+  border-radius: 6px;
+  width:250px;
+  .separator{
+    @include k_separator(2px,100%,$white);
+  }
+}
+
+.clear-address {
+  position: absolute !important;
+  top: 9px;
+  cursor: pointer;
+  right: 30px;
+  font-size: 12px!important;
+}
+
+.filter-content{
+  overflow: hidden;
+  width: 466px;
+  padding: 20px 10px;
+  label {
+    font-weight: 300;
+  }
+  >label{
+    margin-top: 10px;
+  }
+}

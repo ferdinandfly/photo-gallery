@@ -11,8 +11,10 @@
 
 namespace Application\Sonata\MediaBundle\Entity;
 
+use AppBundle\ModelTrait\SlugTrait;
 use Sonata\MediaBundle\Entity\BaseGallery as BaseGallery;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Sluggable\Sluggable;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
@@ -20,8 +22,10 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @package Application\Sonata\MediaBundle\Entity
  * @ORM\Entity(repositoryClass="Application\Sonata\MediaBundle\Entity\EntityRepository\GalleryRepository")
  */
-class Gallery extends BaseGallery
+class Gallery extends BaseGallery implements Sluggable
 {
+    use SlugTrait;
+
     /**
      * @var integer $id
      */
@@ -34,6 +38,7 @@ class Gallery extends BaseGallery
      * @ORM\Column(type="string")
      */
     protected $createdBy;
+
 
     /**
      * Get id
@@ -73,6 +78,6 @@ class Gallery extends BaseGallery
      */
     public function __toString()
     {
-        return $this->name?:"-";
+        return $this->name ?: "-";
     }
 }

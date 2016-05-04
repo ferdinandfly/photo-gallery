@@ -130,7 +130,7 @@ abstract class BaseMediaAdmin extends Admin
 
         $id = $this->getRequest()->get('id');
 
-        $securityContext = $this->getConfigurationPool()->getContainer()->get('security.context');
+        $securityContext = $this->getConfigurationPool()->getContainer()->get('security.authorization_checker');
         if ($securityContext->isGranted('ROLE_SUPER_ADMIN')) {
             $menu->addChild(
                 $this->trans('sidemenu.link_edit_media'),

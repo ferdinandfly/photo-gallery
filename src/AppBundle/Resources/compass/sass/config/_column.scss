@@ -1,0 +1,176 @@
+/* 5 column */
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+  .img-block{
+    color: $grey_dark;
+    img{
+      display: block;
+      max-width: 110px;
+      height: auto;
+      margin: 0 auto 10px;
+    }
+  }
+}
+.col-xs-15 {
+  width: 20%;
+  float: left;
+}
+
+.bottom-column
+{
+  float: none;
+  display: table-cell;
+  vertical-align: bottom;
+}
+
+@media (min-width: $screen-sm) {
+  .col-sm-15 {
+    width: 20%;
+    float: left;
+  }
+  /* centered column when column not full filled the row */
+  .col-sm-center{
+    >[class*=' col-']{
+      float: none;
+      display: inline-block;
+      margin: 0 auto;
+      vertical-align: top;
+    }
+  }
+}
+@media (min-width: $screen-md) {
+  .col-md-15 {
+    width: 20%;
+    float: left;
+  }
+
+  .col-md-center{
+    [class*=' col-']{
+      float: none;
+      display: inline-block;
+      margin: 0 auto;
+      vertical-align: top;
+    }
+  }
+}
+
+/* the equalized col height col. */
+
+.row-height {
+  display: table;
+  table-layout: fixed;
+  height: 100%;
+  width: 100%;
+}
+.col-height {
+  display: table-cell;
+  float: none;
+  height: 100%;
+}
+.col-top {
+  vertical-align: top;
+}
+.col-middle {
+  vertical-align: middle;
+}
+.col-bottom {
+  vertical-align: bottom;
+}
+
+@media (max-width: $screen-sm) {
+  .row-xs-height {
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+  }
+  .col-xs-height {
+    display: table-cell;
+    float: none;
+    height: 100%;
+  }
+  .col-xs-top {
+    vertical-align: top;
+  }
+  .col-xs-middle {
+    vertical-align: middle;
+  }
+  .col-xs-bottom {
+    vertical-align: bottom;
+  }
+}
+
+@media (min-width: $screen-sm) {
+  .row-sm-height {
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+  }
+  .col-sm-height {
+    display: table-cell;
+    float: none;
+    height: 100%;
+  }
+  .col-sm-top {
+    vertical-align: top;
+  }
+  .col-sm-middle {
+    vertical-align: middle;
+  }
+  .col-sm-bottom {
+    vertical-align: bottom;
+  }
+}
+
+@media (min-width: $screen-md) {
+  .row-md-height {
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+  }
+  .col-md-height {
+    display: table-cell;
+    float: none;
+    height: 100%;
+  }
+  .col-md-top {
+    vertical-align: top;
+  }
+  .col-md-middle {
+    vertical-align: middle;
+  }
+  .col-md-bottom {
+    vertical-align: bottom;
+  }
+}
+
+@media (min-width: $screen-lg) {
+  .row-lg-height {
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+  }
+  .col-lg-height {
+    display: table-cell;
+    float: none;
+    height: 100%;
+  }
+  .col-lg-top {
+    vertical-align: top;
+  }
+  .col-lg-middle {
+    vertical-align: middle;
+  }
+  .col-lg-bottom {
+    vertical-align: bottom;
+  }
+}
