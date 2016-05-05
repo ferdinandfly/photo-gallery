@@ -21,8 +21,8 @@
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
 </head>
-<body class="landing-page">
-<nav class="navbar navbar-transparent navbar-absolute">
+<body {% block body_class %}{% endblock %}>
+<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -32,16 +32,26 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Home Page</a>
+            <a class="navbar-brand" href="/">
+                <div class="logo-container">
+                <div class="logo">
+                    <img src="/img/logo.png" alt="Creative Tim Logo" rel="tooltip" title="<b>Photo gallery</b>  for more information , you can contact me. <b>Daiifr</b>" data-placement="bottom" data-html="true">
+                </div>
+                <div class="brand">
+                Home Page
+                </div>
+                    </div>
+            </a>
         </div>
 
         <div class="collapse navbar-collapse" id="navigation-example">
-            {% block header %}
+            {% block nav_bar %}
                 <ul class="nav navbar-nav navbar-right">
                     {% for gallery in galleries %}
                         {% if gallery.slug %}
                             <li>
                                 <a href="{{ path('app_gallery',{'slug': gallery.slug}) }}" class="btn">
+                                    <i class="material-icons">dashboard</i>
                                     {{ gallery.name }}
                                 </a>
                             </li>
@@ -53,8 +63,19 @@
     </div>
 </nav>
 <div class="wrapper">
-    {% block content %}{% endblock %}
+    <div class="header header-filter">
+        {% block header %}{% endblock %}
+    </div>
+    <div class="main main-raised">
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+        </div>
+    <footer class="footer">
+        <div class="container">
     {% block footer %}{% endblock %}
+            </div>
+    </footer>
 </div>
 </body>
 {% javascripts
