@@ -1,24 +1,4 @@
 {% extends "AppBundle::layout.html.twig" %}
-  {% block header %}
-      <ul class="nav navbar-nav navbar-right">
-          <li>
-              <a href="../components-documentation.html" class="btn" target="_blank">
-                  Components
-              </a>
-          </li>
-          {% for gallery in galleries %}
-              {% if gallery.slug %}
-              <li>
-                  <a href="{{ path('app_gallery',{'slug': gallery.slug}) }}" class="btn">
-                      {{ gallery.name }}
-                  </a>
-              </li>
-                  {% endif %}
-          {% endfor %}
-      </ul>
-  {% endblock %}
-
-
 {% block content %}
 
     <div class="header header-filter"

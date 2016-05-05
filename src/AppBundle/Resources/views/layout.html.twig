@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
     <!-- CSS Files -->
     {% stylesheets
-    'bundles/app/css/*'
+    'bundles/app/css/bootstrap-custom.css'
+    'bundles/app/css/material-kit.css'
+    'bundles/app/css/index.css'
     filter="cssrewrite,?yui_css"
     output='css/core.css' %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
@@ -30,11 +32,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://www.creative-tim.com">Creative Tim</a>
+            <a class="navbar-brand" href="/">Home Page</a>
         </div>
 
         <div class="collapse navbar-collapse" id="navigation-example">
-            {% block header %}{% endblock %}
+            {% block header %}
+                <ul class="nav navbar-nav navbar-right">
+                    {% for gallery in galleries %}
+                        {% if gallery.slug %}
+                            <li>
+                                <a href="{{ path('app_gallery',{'slug': gallery.slug}) }}" class="btn">
+                                    {{ gallery.name }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endblock %}
         </div>
     </div>
 </nav>
@@ -44,7 +58,13 @@
 </div>
 </body>
 {% javascripts
-"@AppBundle/Resources/public/js/*"
+"@AppBundle/Resources/public/js/vendors/jquery.min.js"
+"@AppBundle/Resources/public/js/vendors/bootstrap.min.js"
+"@AppBundle/Resources/public/js/vendors/material.min.js"
+"@AppBundle/Resources/public/js/vendors/nouislider.min.js"
+"@AppBundle/Resources/public/js/vendors/bootstrap-datepicker.js"
+"@AppBundle/Resources/public/js/vendors/material-kit.js"
+"@AppBundle/Resources/public/js/slider.js"
 filter="?yui_js"
 output='js/core.js' %}
 <script defer type="text/javascript" src="{{ asset_url }}"></script>

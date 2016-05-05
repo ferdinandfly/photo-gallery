@@ -27,7 +27,8 @@ class DefaultController extends Controller
      */
     public function galleryAction($slug)
     {
-        $gallery = $this->getDoctrine()->getManager()->getRepository('ApplicationSonataMediaBundle:Gallery')->findOneBySlut($slug);
-        return array("gallery" => $gallery);
+        $gallery = $this->getDoctrine()->getManager()->getRepository('ApplicationSonataMediaBundle:Gallery')->findOneBySlug($slug);
+        $galleries = $this->getDoctrine()->getManager()->getRepository('ApplicationSonataMediaBundle:Gallery')->findAll();
+        return array("gallery" => $gallery, "galleries" => $galleries);
     }
 }

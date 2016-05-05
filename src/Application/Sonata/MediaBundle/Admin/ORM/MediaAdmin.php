@@ -20,58 +20,6 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
  */
 class MediaAdmin extends Admin
 {
-    public function getUser()
-    {
-        $container = $this->getConfigurationPool()->getContainer();
-        if (!$container->has('security.token_storage')) {
-            throw new \LogicException('The SecurityBundle is not registered in your application.');
-        }
-
-        if (null === $token = $container->get('security.token_storage')->getToken()) {
-            return;
-        }
-
-        if (!is_object($user = $token->getUser())) {
-            // e.g. anonymous authentication
-            return;
-        }
-
-        return $user;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function createQuery($context = 'list')
-    {
-        $query = parent::createQuery($context);
-        $securityContext = $this->getConfigurationPool()->getContainer()->get('security.authorization_checker');
-        if ($securityContext->isGranted('ROLE_ADMIN') && !$securityContext->isGranted('ROLE_SUPER_ADMIN')) {
-            $username = $securityContext->getToken()->getUser()->getUsername();
-            $query->andWhere($query->getRootAlias().'.createdBy = :username');
-            $query->setParameter('username', $username); // eg get fromsecurity context
-        }
-
-        return $query;
-    }
-
-
-    /**
-     * {@inheritdoc}
-     */
-    public function prePersist($object)
-    {
-        $object->setCreatedBy($this->getUser());
-        $this->preUpdate($object);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function preUpdate($object)
-    {
-
-    }
 
     /**
      * @param  \Sonata\AdminBundle\Datagrid\DatagridMapper $datagridMapper
