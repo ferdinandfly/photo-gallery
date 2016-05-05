@@ -35,10 +35,9 @@ class Gallery extends BaseGallery implements Sluggable
      * @var string $createdBy
      *
      * @Gedmo\Blameable(on="create")
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      */
     protected $createdBy;
-
 
     /**
      * Get id
@@ -48,19 +47,6 @@ class Gallery extends BaseGallery implements Sluggable
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set createdBy
-     *
-     * @param string $createdBy
-     * @return Institute
-     */
-    public function setCreatedBy($createdBy)
-    {
-        $this->createdBy = $createdBy;
-
-        return $this;
     }
 
     /**

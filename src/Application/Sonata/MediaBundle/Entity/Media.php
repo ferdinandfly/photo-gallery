@@ -36,17 +36,6 @@ class Media extends BaseMedia
     }
 
     /**
-     * @param $createdBy
-     * @return $this
-     */
-    public function setCreatedBy($createdBy)
-    {
-        $this->createdBy = $createdBy;
-
-        return $this;
-    }
-
-    /**
      * Get updatedBy
      *
      * @return string
