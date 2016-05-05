@@ -32,15 +32,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">
+            <a href="/">
                 <div class="logo-container">
-                <div class="logo">
-                    <img src="/img/logo.png" alt="Creative Tim Logo" rel="tooltip" title="<b>Photo gallery</b>  for more information , you can contact me. <b>Daiifr</b>" data-placement="bottom" data-html="true">
-                </div>
-                <div class="brand">
-                Home Page
-                </div>
+                    <div class="logo">
+                        <img src="/img/logo.png" alt="Creative Tim Logo" rel="tooltip"
+                             title="<b>Photo gallery</b>  for more information , you can contact me. <b>Daiifr</b>"
+                             data-placement="bottom" data-html="true">
                     </div>
+                    <div class="brand">Home</div>
+                </div>
             </a>
         </div>
 
@@ -70,11 +70,39 @@
         <div class="container">
             {% block content %}{% endblock %}
         </div>
-        </div>
+    </div>
     <footer class="footer">
         <div class="container">
-    {% block footer %}{% endblock %}
-            </div>
+            {% block footer %}
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="/">
+                                Hao TAN
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/">
+                                Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/">
+                                Licenses
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="copyright pull-right">
+                    &copy; 2016, made with <i class="fa fa-heart heart"></i> Hao TAN
+                </div>
+            {% endblock %}
+        </div>
     </footer>
 </div>
 </body>
