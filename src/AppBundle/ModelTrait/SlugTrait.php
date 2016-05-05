@@ -1,5 +1,7 @@
 <?php
 namespace AppBundle\ModelTrait;
+
+use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -12,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait SlugTrait{
 
     /**
-     * @Gedmo\Slug(fields={"name"}, updatable=false, unique=true)
+     * @Gedmo\Slug(fields={"name"}, updatable=true, unique=true)
      * @ORM\Column(length=200, unique=true)
      * @Assert\Regex("/^[a-z0-9\-]+/")
      */

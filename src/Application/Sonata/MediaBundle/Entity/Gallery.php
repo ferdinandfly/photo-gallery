@@ -20,16 +20,21 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Class Gallery
  * @package Application\Sonata\MediaBundle\Entity
- * @ORM\Entity(repositoryClass="Application\Sonata\MediaBundle\Entity\EntityRepository\GalleryRepository")
+ * @ORM\Entity(repositoryClass="Application\Sonata\MediaBundle\EntityRepository\GalleryRepository")
+ * @ORM\Table( name="media__gallery")
  */
 class Gallery extends BaseGallery implements Sluggable
 {
     use SlugTrait;
 
     /**
-     * @var integer $id
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string $createdBy

@@ -9,13 +9,19 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Class Media
  * @package Application\Sonata\MediaBundle\Entity
+ * @ORM\Entity(repositoryClass="Application\Sonata\MediaBundle\EntityRepository\MediaRepository")
+ * @ORM\Table( name="media__media")
  */
 class Media extends BaseMedia
 {
     /**
-     * @var integer $id
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string $createdBy

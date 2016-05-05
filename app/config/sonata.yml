@@ -32,6 +32,10 @@ sonata_block:
 sonata_media:
     #TODO: after php 5.6.7-1, openssl 1.0.2a and ssl-cert 1.0.36. you don't need this anymore.
     # see : https://github.com/sonata-project/SonataMediaBundle/issues/759
+    class:
+        media:              Application\Sonata\MediaBundle\Entity\Media
+        gallery:            Application\Sonata\MediaBundle\Entity\Gallery
+        gallery_has_media:  Application\Sonata\MediaBundle\Entity\GalleryHasMedia
     buzz:
         connector:  sonata.media.buzz.connector.curl
     default_context: default
