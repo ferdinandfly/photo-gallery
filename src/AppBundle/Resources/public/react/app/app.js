@@ -1,22 +1,27 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import configureStore from './configureStore'
 import { browserHistory, Router, Route } from 'react-router'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import injectTapEventPlugin from "react-tap-event-plugin";
 
-import App from './components/App';
+import ListMap from './containers/ListMap';
+import configureStore from './configureStore'
+import { URL_INSTITUTE_PREFIX, URL_FORMATION_PREFIX} from "./helper/config"
+import InstituteMap from './components/InstituteMap';
+import FormationMap from './components/FormationMap';
+import SideBar from './components/SideBar';
+
+injectTapEventPlugin();
 const store = configureStore();
 render(
     <Provider store={store}>
-        <MuiThemeProvider muiTheme={getMuiTheme()} store={store}>
             <Router history={browserHistory}>
-                <Route path="/" component={App}>
-
+                <Route path="/" component={ListMap}>
+                    <Route path={URL_INSTITUTE_PREFIX+"*"} component={InstituteMap}/>
+                    <Route path={URL_FORMATION_PREFIX+"*"} component={FormationMap}/>
+                    <Route path="*" component={SideBar}/>
                 </Route>
             </Router>
-        </MuiThemeProvider>
     </Provider>,
     document.getElementById('react_main')
 );
