@@ -5,6 +5,8 @@ import configureStore from './configureStore'
 import { browserHistory, Router, Route } from 'react-router'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 import App from './components/App';
 const store = configureStore();

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import DropDownMenu from 'material-ui/DropDownMenu';
+import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
@@ -15,13 +15,52 @@ class Menu extends Component {
 
     render(){
         return(
-                <DropDownMenu value={this.state.value} onChange={this.handleChange}>
-                    <MenuItem value={1} primaryText="Never" />
-                    <MenuItem value={2} primaryText="Every Night" />
-                    <MenuItem value={3} primaryText="Weeknights" />
-                    <MenuItem value={4} primaryText="Weekends" />
-                    <MenuItem value={5} primaryText="Weekly" />
-                </DropDownMenu>
+            <div>
+                <IconMenu
+                    iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+                    anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+                    targetOrigin={{horizontal: 'left', vertical: 'top'}}
+                >
+                    <MenuItem primaryText="Refresh" />
+                    <MenuItem primaryText="Send feedback" />
+                    <MenuItem primaryText="Settings" />
+                    <MenuItem primaryText="Help" />
+                    <MenuItem primaryText="Sign out" />
+                </IconMenu>
+                <IconMenu
+                    iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+                    anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+                    targetOrigin={{horizontal: 'left', vertical: 'bottom'}}
+                >
+                    <MenuItem primaryText="Refresh" />
+                    <MenuItem primaryText="Send feedback" />
+                    <MenuItem primaryText="Settings" />
+                    <MenuItem primaryText="Help" />
+                    <MenuItem primaryText="Sign out" />
+                </IconMenu>
+                <IconMenu
+                    iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+                    anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
+                    targetOrigin={{horizontal: 'right', vertical: 'bottom'}}
+                >
+                    <MenuItem primaryText="Refresh" />
+                    <MenuItem primaryText="Send feedback" />
+                    <MenuItem primaryText="Settings" />
+                    <MenuItem primaryText="Help" />
+                    <MenuItem primaryText="Sign out" />
+                </IconMenu>
+                <IconMenu
+                    iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+                    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+                    targetOrigin={{horizontal: 'right', vertical: 'top'}}
+                >
+                    <MenuItem primaryText="Refresh" />
+                    <MenuItem primaryText="Send feedback" />
+                    <MenuItem primaryText="Settings" />
+                    <MenuItem primaryText="Help" />
+                    <MenuItem primaryText="Sign out" />
+                </IconMenu>
+            </div>
         );
     }
 }
