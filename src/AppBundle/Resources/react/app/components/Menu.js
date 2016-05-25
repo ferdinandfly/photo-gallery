@@ -1,65 +1,33 @@
 import React, { Component, PropTypes } from 'react';
-import IconMenu from 'material-ui/IconMenu';
+import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton/IconButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 class Menu extends Component {
 
+
     constructor(props) {
         super(props);
-        this.state = {value: 2};
+        this.state = {open: false};
     }
 
-    handleChange = (event, index, value) => this.setState({value});
+    handleToggle = () => this.setState({open: !this.state.open});
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
-                <IconMenu
-                    iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-                    anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-                    targetOrigin={{horizontal: 'left', vertical: 'top'}}
-                >
-                    <MenuItem primaryText="Refresh" />
-                    <MenuItem primaryText="Send feedback" />
-                    <MenuItem primaryText="Settings" />
-                    <MenuItem primaryText="Help" />
-                    <MenuItem primaryText="Sign out" />
-                </IconMenu>
-                <IconMenu
-                    iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-                    anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-                    targetOrigin={{horizontal: 'left', vertical: 'bottom'}}
-                >
-                    <MenuItem primaryText="Refresh" />
-                    <MenuItem primaryText="Send feedback" />
-                    <MenuItem primaryText="Settings" />
-                    <MenuItem primaryText="Help" />
-                    <MenuItem primaryText="Sign out" />
-                </IconMenu>
-                <IconMenu
-                    iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-                    anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
-                    targetOrigin={{horizontal: 'right', vertical: 'bottom'}}
-                >
-                    <MenuItem primaryText="Refresh" />
-                    <MenuItem primaryText="Send feedback" />
-                    <MenuItem primaryText="Settings" />
-                    <MenuItem primaryText="Help" />
-                    <MenuItem primaryText="Sign out" />
-                </IconMenu>
-                <IconMenu
-                    iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-                    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-                    targetOrigin={{horizontal: 'right', vertical: 'top'}}
-                >
-                    <MenuItem primaryText="Refresh" />
-                    <MenuItem primaryText="Send feedback" />
-                    <MenuItem primaryText="Settings" />
-                    <MenuItem primaryText="Help" />
-                    <MenuItem primaryText="Sign out" />
-                </IconMenu>
+                <RaisedButton
+                    label="Toggle Drawer"
+                    onTouchTap={this.handleToggle}
+                    icon={<MoreVertIcon />}
+                />
+                <Drawer open={this.state.open}>
+                    <MenuItem>Menu Item</MenuItem>
+                    <MenuItem>Menu Item 2</MenuItem>
+                    <MenuItem>Menu Item 3</MenuItem>
+
+                </Drawer>
             </div>
         );
     }
