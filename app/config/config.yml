@@ -90,3 +90,12 @@ stof_doctrine_extensions:
             blameable: true
             timestampable : true
             sluggable: true
+fos_rest:
+    routing_loader:
+        default_format: json                            # All responses should be JSON formated
+        include_format: false                           # We do not include format in request, so that all responses
+                                                        # will eventually be JSON formated
+
+jms_serializer:
+    metadata:
+        auto_detection: true

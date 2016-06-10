@@ -16,7 +16,7 @@ class Menu extends Component {
 
     render() {
         return (
-            <div>
+            <div className="test">
                 <RaisedButton
                     label="Toggle Drawer"
                     onTouchTap={this.handleToggle}
