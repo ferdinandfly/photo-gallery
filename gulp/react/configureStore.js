@@ -1,18 +1,18 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import {reducer as formReducer} from 'redux-form';
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
-import galleryReducer from './reducers/galleryReducer'
+import mainReducer from './reducers/mainReducer'
 
 const reducer = combineReducers({
-    gallery: galleryReducer,
-    form: formReducer
+    main: mainReducer
 });
 
 export default function configureStore() {
     const initialState =
     {
-        gallery: {}
+        main: {
+            elements: []
+        }
     };
     return createStore(
         reducer,

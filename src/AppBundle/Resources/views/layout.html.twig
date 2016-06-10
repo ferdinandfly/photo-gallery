@@ -12,13 +12,7 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
     <!-- CSS Files -->
-    {% stylesheets
-    'bundles/app/css/bootstrap-custom.css'
-    'bundles/app/css/index.css'
-    filter="cssrewrite,?yui_css"
-    output='css/core.css' %}
-    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
-    {% endstylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/core.css') }}" />
 </head>
 <body {% block body_class %}{% endblock %}>
 <div class="wrapper">
@@ -62,13 +56,5 @@
     </footer>
 </div>
 </body>
-{% javascripts
-"@AppBundle/Resources/public/js/vendors/jquery.min.js"
-"@AppBundle/Resources/public/js/vendors/bootstrap.min.js"
-"@AppBundle/Resources/public/js/vendors/bootstrap-datepicker.js"
-"@AppBundle/Resources/public/js/app_react.js"
-filter="?yui_js"
-output='js/core_white.js' %}
-<script defer type="text/javascript" src="{{ asset_url }}"></script>
-{% endjavascripts %}
+<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </html>

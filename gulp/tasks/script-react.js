@@ -1,9 +1,8 @@
 'use strict';
 
+var config     = require('./../config');
 var gulp        = require('gulp');
 var gutil       = require('gulp-util');
-
-// Browserify
 var source     = require('vinyl-source-stream');
 var buffer     = require('vinyl-buffer');
 var browserify = require('browserify');
@@ -12,13 +11,10 @@ var babelify   = require('babelify');
 var rename     = require('gulp-rename');
 var uglify     = require('gulp-uglify');
 
-var config = require('../configs/config.js');
 
-gulp.task('browserify', function() {
-
-    console.log(config.dev.base + 'app.js', config.dev.js);
+gulp.task('script-react', function() {
     var bundler = browserify({
-        entries: [config.dev.jsFile],
+        entries: [config.react.src],
         debug: true,
         cache: {},
         packageCache: {},
@@ -33,36 +29,35 @@ gulp.task('browserify', function() {
             console.log('Updating!');
             watcher.bundle()
                 .on('error', gutil.log.bind(gutil, 'Browserify Error', gutil.colors.red('411')))
-                .pipe(source(config.dev.jsFile))
+                .pipe(source(config.react.src))
                 .pipe(buffer())
                 .on('error', gutil.log)
-                .pipe(rename('app_react.js'))
-                .pipe(gulp.dest(config.dev.js));
+                .pipe(rename(config.react.dest))
+                .pipe(gulp.dest(config.dest.js));
             console.log('Updated!', (Date.now() - updateStart) + 'ms');
         })
         .transform(babelify)
         .bundle()
         .on('error', gutil.log.bind(gutil, 'Browserify Error', gutil.colors.red('411')))
-        .pipe(source(config.dev.jsFile))
-        .pipe(rename('app_react.js'))
-        .pipe(gulp.dest(config.dev.js));
+        .pipe(source(config.react.src))
+        .pipe(rename(config.react.dest))
+        .pipe(gulp.dest(config.dest.js));
 });
 
-
-gulp.task('browserify-prod', function() {
-
+gulp.task('script-react-prod', function(){
     var bundler = browserify({
-        entries: [config.dev.jsFile],
-        debug: true,
-        cache: {}, packageCache: {}, fullPaths: true
+        entries: [config.react.src],
+        debug: false,
+        cache: {},
+        packageCache: {},
+        fullPaths: false
     }).transform(babelify);
-
     bundler
         .bundle()
         .on('error', gutil.log.bind(gutil, 'Browserify Error', gutil.colors.red('411')))
-        .pipe(source(config.dev.jsFile))
+        .pipe(source(config.react.src))
         .pipe(buffer())
         .pipe(uglify())
-        .pipe(rename('app.js'))
-        .pipe(gulp.dest(config.prod.js));
+        .pipe(rename(config.react.dest))
+        .pipe(gulp.dest(config.dest.js));
 });

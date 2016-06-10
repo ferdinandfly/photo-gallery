@@ -3,9 +3,10 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import configureStore from './configureStore'
 import { browserHistory, Router, Route } from 'react-router'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from "react-tap-event-plugin";
+
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 injectTapEventPlugin();
 
 import App from './components/App';
