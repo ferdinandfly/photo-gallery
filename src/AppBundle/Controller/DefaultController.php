@@ -2,30 +2,21 @@
 
 namespace AppBundle\Controller;
 
-use FOS\RestBundle\Controller\FOSRestController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
-use FOS\RestBundle\Controller\Annotations\Get;
 
-class DefaultController extends FOSRestController
+class DefaultController extends Controller
 {
-
     /**
-     * @Get("/gallery", name="get_gallery", options={ "method_prefix" = false })
+     * @Route("/", name="homepage")
      * @Cache(maxage="6000",public="true")
+     * @Template()
      */
-    public function getGalleriesAction()
+    public function indexAction()
     {
-        $galleries = $this->getDoctrine()->getManager()->getRepository('ApplicationSonataMediaBundle:Gallery')->findAll();
-        return $this->handleView($this->view($galleries));
-    }
-
-    /**
-     * @Get("/gallery/{slug}", name="get_gallery_media", options={ "method_prefix" = false })
-     * @Cache(maxage="6000",public="true")
-     */
-    public function getGalleryAction($slug)
-    {
-        $gallery = $this->getDoctrine()->getManager()->getRepository('ApplicationSonataMediaBundle:Gallery')->findOneBySlug($slug);
-        return $this->handleView($this->view($gallery->getGalleryHasMedias()));
+        return array();
     }
 }
