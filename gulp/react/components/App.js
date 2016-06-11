@@ -3,36 +3,39 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { getCategories } from '../helpers/functions';
 import Slider from './Slider';
 class AppComponent extends Component
 {
-    componentWillMount(){
-        getCategories(this.props.dispatch);
-    }
 
     constructor(props) {
         super(props);
         this.state = {open: false};
     }
 
+    componentWillMount(){
+        getCategories(this.props.dispatch);
+    }
+
     handleOpenMenu = () => this.setState({open: true});
     handleCloseMenu = () => this.setState({open: false});
     render()
     {
+        let {categories} = this.props;
         return (
-            <div className="row">
+            <div>
                 <Drawer open={this.state.open}>
-                    <MenuItem>Menu Item</MenuItem>
-                    <MenuItem>Menu Item 2</MenuItem>
-                    <MenuItem>Menu Item 3</MenuItem>
-
+                    { categories.map((category, index)=>
+                        <MenuItem key={index}><Link to={`/${category.slug}`}> {category.name}</Link></MenuItem>
+                    )}
                 </Drawer>
                 <div className="main-slider col-xs12"
-                     onMouseLeave={this.handleOpenMenu()}
-                     onMouseEnter={this.handleCloseMenu()}
+                     onMouseLeave={this.handleOpenMenu}
+                     onMouseEnter={this.handleCloseMenu}
                 >
-                    {this.props.children}
+                    {this.props.children | <Slider category={'test'} />}
                 </div>
             </div>
         );
@@ -45,7 +48,3 @@ const mapState = (state) => {
 };
 const App = connect(mapState)(AppComponent);
 export default App;
-
-
-
-export default  App;

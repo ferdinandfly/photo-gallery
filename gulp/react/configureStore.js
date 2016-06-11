@@ -8,10 +8,11 @@ const reducer = combineReducers({
 });
 
 export default function configureStore() {
+
     const initialState =
     {
         main: {
-            elements: []
+            categories: []
         }
     };
     return createStore(
