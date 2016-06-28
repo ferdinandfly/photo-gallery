@@ -9,7 +9,6 @@ import { getCategories } from '../helpers/functions';
 import Slider from './Slider';
 class AppComponent extends Component
 {
-
     constructor(props) {
         super(props);
         this.state = {open: false};
@@ -23,7 +22,7 @@ class AppComponent extends Component
     handleCloseMenu = () => this.setState({open: false});
     render()
     {
-        let {categories} = this.props;
+        let {categories, children} = this.props;
         return (
             <div>
                 <Drawer open={this.state.open}>
@@ -35,7 +34,7 @@ class AppComponent extends Component
                      onMouseLeave={this.handleOpenMenu}
                      onMouseEnter={this.handleCloseMenu}
                 >
-                    {this.props.children | <Slider category={'test'} />}
+                    { children || <Slider params={ {category: "test"}}/>}
                 </div>
             </div>
         );

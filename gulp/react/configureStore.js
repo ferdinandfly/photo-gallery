@@ -12,7 +12,8 @@ export default function configureStore() {
     const initialState =
     {
         main: {
-            categories: []
+            categories: [],
+            medias: []
         }
     };
     return createStore(

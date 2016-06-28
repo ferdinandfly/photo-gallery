@@ -12,11 +12,14 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
+     * @Route("/{path}")
      * @Cache(maxage="6000",public="true")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction($path=null)
     {
-        return array();
+        return array(
+            "path" => $path,
+        );
     }
 }
