@@ -4,6 +4,3 @@ Application\Sonata\MediaBundle\Entity\Gallery:
     slug:
       expose: true
       groups: [sonata_api_read,sonata_search ]
-    galleryHasMedias:
-      expose: true
-      groups: [sonata_api_read,sonata_search ]

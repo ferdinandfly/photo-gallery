@@ -44,4 +44,12 @@ class GalleryHasMedia extends BaseGalleryHasMedia
     {
         return $this->id;
     }
+
+    /**
+     * @return \Sonata\MediaBundle\Model\MediaInterface
+     */
+    public function getMediaObject()
+    {
+        return $this->getMedia();
+    }
 }
