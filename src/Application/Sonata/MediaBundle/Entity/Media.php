@@ -64,4 +64,12 @@ class Media extends BaseMedia
         $this->providerReference = null;
         $this->binaryContent = $binaryContent;
     }
+
+    public function getReferenceUrl(){
+        if($this){
+            global $kernel;
+            $service = $kernel->getContainer()->get($this->getProviderName());
+            return $service->generatePublicUrl($this,'reference');
+        }
+    }
 }
