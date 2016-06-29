@@ -1,0 +1,6 @@
+Application\Sonata\MediaBundle\Entity\GalleryHasMedia:
+    exclusion_policy: ALL
+    virtual_properties:
+        getMediaObject:
+            expose: true
+            serialized_name: media

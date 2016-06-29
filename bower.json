@@ -1,0 +1,24 @@
+{
+  "name": "photo-gallery",
+  "description": "photo-gallery",
+  "main": "app.js",
+  "authors": [
+    "Hao TAN"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "photo-gallery"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "datatables.net": "^1.10.12"
+  }
+}

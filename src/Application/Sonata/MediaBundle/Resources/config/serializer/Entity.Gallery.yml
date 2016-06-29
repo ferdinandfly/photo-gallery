@@ -1,0 +1,6 @@
+Application\Sonata\MediaBundle\Entity\Gallery:
+  exclusion_policy: ALL
+  properties:
+    slug:
+      expose: true
+      groups: [sonata_api_read,sonata_search ]

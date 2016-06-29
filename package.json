@@ -1,0 +1,68 @@
+{
+  "name": "photo-gallery",
+  "version": "1.0.0",
+  "description": "photo-gallery",
+  "main": "app.js",
+  "dependencies": {
+    "bootstrap-sass": "^3.3.*",
+    "jquery": "^1.12.3",
+    "react": "^15.0.1",
+    "react-addons-create-fragment": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "react-owl-carousel": "^0.14.0",
+    "react-redux": "^4.4.1",
+    "react-router": "^2.4.0",
+    "react-router-redux": "^4.0.4",
+    "react-tap-event-plugin": "^1.0.0",
+    "redux": "^3.3.1",
+    "redux-thunk": "^2.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.1.4",
+    "babel-core": "^6.1.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.1.4",
+    "babel-preset-react": "^6.1.18",
+    "babel-preset-stage-0": "^6.1.18",
+    "babelify": "^7.2.0",
+    "bower": "^1.7.9",
+    "browserify": "^10.2.4",
+    "classnames": "^1.2.2",
+    "glob": "^7.0.3",
+    "gulp": "^3.9.1",
+    "gulp-bower": "0.0.*",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^2.0.7",
+    "gulp-concat": "^2.6.0",
+    "gulp-environments": "^0.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.1",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.6",
+    "immutable": "^3.7.3",
+    "material-ui": "^0.15.0",
+    "react-controllables": "^0.3.3",
+    "react-pure-render": "^1.0.2",
+    "redux-logger": "^2.6.1",
+    "run-sequence": "^1.1.1",
+    "sass": "^0.5.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.2.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp dev  --gulpfile gulp/gulpfile.js",
+    "watch": "gulp watch --gulpfile gulp/gulpfile.js",
+    "prod": "gulp prod --gulpfile gulp/gulpfile.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ferdinandfly/photo-gallery.git"
+  },
+  "keywords": [
+    "photo-gallery"
+  ],
+  "author": "Hao TAN",
+  "license": "GPL-3.0"
+}

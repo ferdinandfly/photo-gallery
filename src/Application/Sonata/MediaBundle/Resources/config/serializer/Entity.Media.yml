@@ -1,0 +1,6 @@
+Application\Sonata\MediaBundle\Entity\Media:
+    exclusion_policy: ALL
+    virtual_properties:
+        getReferenceUrl:
+            expose: true
+            serialized_name: url
