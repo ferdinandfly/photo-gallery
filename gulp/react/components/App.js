@@ -7,32 +7,38 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getCategories } from '../helpers/functions';
 import Slider from './Slider';
-class AppComponent extends Component
-{
+import IconButton from 'material-ui/IconButton';
+import ImageDehaze from 'material-ui/svg-icons/image/dehaze';
+import AppBar from 'material-ui/AppBar';
+
+class AppComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {open: false};
     }
 
-    componentWillMount(){
+    componentWillMount() {
         getCategories(this.props.dispatch);
     }
 
     handleOpenMenu = () => this.setState({open: true});
     handleCloseMenu = () => this.setState({open: false});
-    render()
-    {
+    //toggleMenu = () => this.setState({open: !this.state.open});
+    render() {
         let {categories, children} = this.props;
         return (
-            <div>
+            <div className="row">
+                <IconButton className="menu-button" onMouseDown={this.handleOpenMenu}>
+                    <ImageDehaze />
+                </IconButton>
                 <Drawer open={this.state.open}>
-                    { categories.map((category, index)=>
-                        <MenuItem key={index}><Link to={`/${category.slug}`}> {category.name}</Link></MenuItem>
-                    )}
+                    <AppBar title="Menu" onLeftIconButtonTouchTap={this.handleCloseMenu}/>
+                        { categories.map((category, index)=>
+                            <Link key={index} to={`/${category.slug}`}> <MenuItem > <span className="menu-item" >{category.name}</span></MenuItem></Link>
+                        )}
                 </Drawer>
-                <div className="main-slider col-xs12"
-                     onMouseLeave={this.handleOpenMenu}
-                     onMouseEnter={this.handleCloseMenu}
+                <div className="main-slider col-xs-12"
+                     onClick={this.handleCloseMenu}
                 >
                     { children || <Slider params={ {category: "test"}}/>}
                 </div>

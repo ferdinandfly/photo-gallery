@@ -4,15 +4,16 @@
   "description": "photo-gallery",
   "main": "app.js",
   "dependencies": {
-    "jquery": "^1.12.3",
     "bootstrap-sass": "^3.3.*",
+    "jquery": "^1.12.3",
     "react": "^15.0.1",
     "react-addons-create-fragment": "^15.0.1",
     "react-dom": "^15.0.1",
-    "react-tap-event-plugin": "^1.0.0",
+    "react-owl-carousel": "^0.14.0",
     "react-redux": "^4.4.1",
     "react-router": "^2.4.0",
     "react-router-redux": "^4.0.4",
+    "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.3.1",
     "redux-thunk": "^2.0.1"
   },

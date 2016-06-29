@@ -13,12 +13,18 @@ module.exports = {
         "src": "./react/app.js",
         "dest": "app.js"
     },
-    "css" : {
+    "sass" : {
         "src" : [
             './sass/bootstrap-custom.scss',
             './sass/index.scss'
         ],
         "dest": "core.css"
+    },
+    "css": {
+        "src": [
+            '../node_modules/react-owl-carousel/src/owl.carousel.css'
+        ],
+        "dest": "vendor.css"
     },
     "images": {
         "src": "./images/**/*"

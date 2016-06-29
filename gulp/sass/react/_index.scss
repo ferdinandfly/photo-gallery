@@ -2,3 +2,13 @@
   min-height: 600px;
 }
 
+.menu-button{
+  position: fixed !important;
+  left: 20px;
+  top: 20px;
+}
+
+.menu-item{
+  padding-left: 20px;
+  display: inline-block;
+}

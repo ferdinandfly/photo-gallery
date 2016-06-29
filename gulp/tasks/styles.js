@@ -13,13 +13,24 @@ var sassOptions = {
 };
 
 gulp.task('styles',function() {
-    return gulp.src(config.css.src)
+    return gulp.src(config.sass.src)
         .pipe(sass(sassOptions).on('error', sass.logError))
-        .pipe(concat(config.css.dest))
+        .pipe(concat(config.sass.dest))
         .pipe(production(cleanCss()))
         .pipe(gulp.dest(config.dest.css))
 });
 
 gulp.task('watch-styles', ['styles'],function(){
-    gulp.watch(config.css.src, ['styles']);
+    gulp.watch(config.sass.src, ['styles']);
+});
+
+gulp.task('styles-vendor',function() {
+    return gulp.src(config.css.src)
+        .pipe(concat(config.css.dest))
+        .pipe(production(cleanCss()))
+        .pipe(gulp.dest(config.dest.css))
+});
+
+gulp.task('watch-styles-vendor',['styles-vendor'], function(){
+    gulp.watch(config.css.src, ['styles-vendor']);
 });
