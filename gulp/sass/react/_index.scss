@@ -1,7 +1,3 @@
-.main-slider{
-  min-height: 600px;
-}
-
 .menu-button{
   position: fixed !important;
   left: 20px;
@@ -12,4 +8,11 @@
 .menu-item{
   padding-left: 20px;
   display: inline-block;
+}
+.owl-item{
+  img{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
