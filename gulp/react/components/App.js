@@ -26,24 +26,28 @@ class AppComponent extends Component {
     //toggleMenu = () => this.setState({open: !this.state.open});
     render() {
         let {categories, children} = this.props;
-        return (
-            <div className="row">
-                <IconButton className="menu-button" onMouseDown={this.handleOpenMenu}>
-                    <ImageDehaze />
-                </IconButton>
-                <Drawer open={this.state.open}>
-                    <AppBar title="Menu" onLeftIconButtonTouchTap={this.handleCloseMenu}/>
+        if (categories.length > 0){
+            return (
+                <div className="row">
+                    <IconButton className="menu-button" onMouseDown={this.handleOpenMenu}>
+                        <ImageDehaze />
+                    </IconButton>
+                    <Drawer open={this.state.open}>
+                        <AppBar title="Menu" onLeftIconButtonTouchTap={this.handleCloseMenu}/>
                         { categories.map((category, index)=>
                             <Link key={index} to={`/${category.slug}`}> <MenuItem > <span className="menu-item" >{category.name}</span></MenuItem></Link>
                         )}
-                </Drawer>
-                <div className="main-slider col-xs-12"
-                     onClick={this.handleCloseMenu}
-                >
-                    { children || <Slider params={ {category: "black-white"}}/>}
+                    </Drawer>
+                    <div className="main-slider col-xs-12"
+                         onClick={this.handleCloseMenu}
+                    >
+                        { children || <Slider params={ {category: categories[0].slug}}/>}
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }else {
+            return null;
+        }
     }
 }
 const mapState = (state) => {
