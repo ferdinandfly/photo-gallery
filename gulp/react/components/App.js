@@ -40,7 +40,7 @@ class AppComponent extends Component {
                 <div className="main-slider col-xs-12"
                      onClick={this.handleCloseMenu}
                 >
-                    { children || <Slider params={ {category: "test"}}/>}
+                    { children || <Slider params={ {category: "black-white"}}/>}
                 </div>
             </div>
         );
