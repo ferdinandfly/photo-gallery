@@ -55,9 +55,9 @@ sonata_media:
             providers:
                 - sonata.media.provider.image
             formats:
-                small:  { width: 160, height: 160, quality: 70}
-                medium: { width: 300, height: 200, quality: 70}
-                big:    { width: 480, quality: 70}
+                small:   { width: 400,  quality: 70}
+                medium:  { width: 800,  quality: 70}
+                large:   { width: 1170, quality: 70}
     providers:
         image:
             service:    sonata.media.provider.image
