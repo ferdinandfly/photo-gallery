@@ -11,10 +11,13 @@ injectTapEventPlugin();
 
 import App from './components/App';
 import Slider from './components/Slider';
+const muiTheme = getMuiTheme({
+    fontFamily: 'Karla, sans-serif'
+});
 const store = configureStore();
 render(
     <Provider store={store}>
-        <MuiThemeProvider muiTheme={getMuiTheme()} store={store}>
+        <MuiThemeProvider muiTheme={muiTheme} store={store}>
             <Router history={browserHistory}>
                 <Route path="/" component={App}>
                     <Route path=":category" component={Slider}/>

@@ -33,9 +33,9 @@ class AppComponent extends Component {
                         <ImageDehaze />
                     </IconButton>
                     <Drawer open={this.state.open}>
-                        <AppBar title="Menu" onLeftIconButtonTouchTap={this.handleCloseMenu}/>
+                        <AppBar title="DAIIFR" onLeftIconButtonTouchTap={this.handleCloseMenu}/>
                         { categories.map((category, index)=>
-                            <Link key={index} to={`/${category.slug}`}> <MenuItem > <span className="menu-item" >{category.name}</span></MenuItem></Link>
+                            <Link key={index} to={`/${category.slug}`}> <MenuItem > <span className="menu-item h3 text-uppercase " >{category.name}</span></MenuItem></Link>
                         )}
                     </Drawer>
                     <div className="main-slider col-xs-12"

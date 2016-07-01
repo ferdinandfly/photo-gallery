@@ -16,3 +16,15 @@
     height: auto;
   }
 }
+.owl-pagination{
+  display:none;
+}
+.main-slider{
+  height: 100vh;
+  position: relative;
+  .owl-carousel{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
