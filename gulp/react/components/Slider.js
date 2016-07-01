@@ -20,7 +20,7 @@ class SliderComponent extends Component {
         return (
             <div>
                 <h1 className="text-center text-uppercase">{this.props.params.category}</h1>
-                <OwlCarousel slideSpeed={300} navigation singleItem autoPlay autoHeight navigation={false} pagination={false} dots={false}>
+                <OwlCarousel slideSpeed={300} navigation singleItem autoPlay autoHeight navigationText={ ['<i class="material-icons">navigate_before</i>','<i class="material-icons">navigate_next</i>']}>
                     { medias.map(media =>
                         <MediaElement media={ media.media} key={media.position}/>
                     )}

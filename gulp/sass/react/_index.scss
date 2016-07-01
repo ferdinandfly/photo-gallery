@@ -16,9 +16,7 @@
     height: auto;
   }
 }
-.owl-pagination{
-  display:none;
-}
+
 .main-slider{
   height: 100vh;
   position: relative;
@@ -26,5 +24,24 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+  }
+  .owl-pagination{
+    display:none;
+  }
+
+  .owl-buttons{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    >div{
+      background:transparent!important;
+    }
+  }
+  .owl-prev{
+    float: left;
+  }
+  .owl-next{
+    float: right;
   }
 }
