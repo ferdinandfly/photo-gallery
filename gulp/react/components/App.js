@@ -38,7 +38,7 @@ class AppComponent extends Component {
                             <Link key={index} to={`/${category.slug}`}> <MenuItem > <span className="menu-item h3 text-uppercase " >{category.name}</span></MenuItem></Link>
                         )}
                     </Drawer>
-                    <div className="main-slider col-xs-12"
+                    <div className="col-xs-12"
                          onClick={this.handleCloseMenu}
                     >
                         { children || <Slider params={ {category: categories[0].slug}}/>}
