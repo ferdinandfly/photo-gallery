@@ -20,3 +20,7 @@ bower_components
 .sass-cache
 *.log
 /web/app_dev.php
+web/css/
+web/img/
+web/js/
+web/uploads/

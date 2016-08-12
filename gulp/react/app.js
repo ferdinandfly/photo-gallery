@@ -12,7 +12,7 @@ injectTapEventPlugin();
 import App from './components/App';
 import Slider from './components/Slider';
 const muiTheme = getMuiTheme({
-    fontFamily: 'Karla, sans-serif'
+    fontFamily: 'Nunito, sans-serif'
 });
 const store = configureStore();
 render(
