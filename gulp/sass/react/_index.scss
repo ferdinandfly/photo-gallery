@@ -1,3 +1,6 @@
+.menu{
+  font-style:italic;
+}
 .menu-button{
   position: fixed !important;
   left: 20px;
@@ -18,7 +21,8 @@
 }
 
 .main-slider{
-  height: 100vh;
+  margin-top: 50px;
+  height: 95vh;
   position: relative;
   .owl-carousel{
     position: absolute;
@@ -47,3 +51,6 @@
   }
 }
 
+.clear-fix{
+  clear:both;
+}

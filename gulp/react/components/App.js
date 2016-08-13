@@ -26,18 +26,22 @@ class AppComponent extends Component {
     //toggleMenu = () => this.setState({open: !this.state.open});
     render() {
         let {categories, children} = this.props;
-        if (categories.length > 0){
+        if (categories.length > 0) {
             return (
                 <div className="row">
-                    <IconButton className="menu-button" onMouseDown={this.handleOpenMenu}>
-                        <ImageDehaze />
-                    </IconButton>
-                    <Drawer open={this.state.open}>
-                        <AppBar title="DAIIFR" onLeftIconButtonTouchTap={this.handleCloseMenu}/>
-                        { categories.map((category, index)=>
-                            <Link key={index} to={`/${category.slug}`}> <MenuItem > <span className="menu-item h3 text-uppercase " >{category.name}</span></MenuItem></Link>
-                        )}
-                    </Drawer>
+                    <div className="menu">
+                        <IconButton className="menu-button" onMouseDown={this.handleOpenMenu}>
+                            <ImageDehaze />
+                        </IconButton>
+                        <Drawer open={this.state.open}>
+                            <AppBar title="DAIIFR" onLeftIconButtonTouchTap={this.handleCloseMenu}/>
+                            { categories.map((category, index)=>
+                                <Link key={index} to={`/${category.slug}`}> <MenuItem > <span
+                                    className="menu-item h3 text-uppercase ">{category.name}</span></MenuItem></Link>
+                            )}
+                        </Drawer>
+                    </div>
+
                     <div className="col-xs-12"
                          onClick={this.handleCloseMenu}
                     >
@@ -45,7 +49,7 @@ class AppComponent extends Component {
                     </div>
                 </div>
             );
-        }else {
+        } else {
             return null;
         }
     }
