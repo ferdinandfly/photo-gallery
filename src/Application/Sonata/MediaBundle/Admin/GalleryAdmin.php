@@ -101,6 +101,8 @@ class GalleryAdmin extends Admin
             ->add('enabled', 'boolean', array('editable' => true))
             ->add('context', 'trans', array('catalogue' => 'SonataMediaBundle'))
             ->add('defaultFormat', 'trans', array('catalogue' => 'SonataMediaBundle'))
+            ->add('listOrder', 'integer', array('editable' => true))
+
         ;
     }
 

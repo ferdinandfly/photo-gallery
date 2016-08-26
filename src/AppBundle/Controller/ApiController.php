@@ -24,7 +24,7 @@ class ApiController extends FOSRestController
      */
     public function getGalleriesAction()
     {
-        $galleries = $this->getDoctrine()->getManager()->getRepository('ApplicationSonataMediaBundle:Gallery')->findAll();
+        $galleries = $this->getDoctrine()->getManager()->getRepository('ApplicationSonataMediaBundle:Gallery')->getAllByListOrder();
         return $this->view($galleries);
     }
 

@@ -45,6 +45,12 @@ class Gallery extends BaseGallery implements Sluggable
     protected $createdBy;
 
     /**
+     * @var integer
+     * @ORM\Column(name="list_order",nullable=true)
+     */
+    protected $listOrder;
+
+    /**
      * Get id
      *
      * @return integer $id
@@ -62,6 +68,17 @@ class Gallery extends BaseGallery implements Sluggable
     public function getCreatedBy()
     {
         return $this->createdBy;
+    }
+
+    public function getListOrder()
+    {
+        return $this->listOrder;
+    }
+
+    public function setListOrder($order)
+    {
+        $this->listOrder = $order;
+        return $this;
     }
 
     /**

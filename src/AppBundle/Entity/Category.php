@@ -47,6 +47,8 @@ class Category implements Sluggable
      */
     protected $name;
 
+
+
     /**
      * Get id
      *
@@ -79,6 +81,8 @@ class Category implements Sluggable
     {
         return $this->name;
     }
+
+
 
     public function __toString()
     {

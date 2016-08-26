@@ -30,4 +30,16 @@ class GalleryRepository extends EntityRepository
 
         return $qb->getQuery();
     }
+
+    /**
+     * @return array
+     */
+    public function getAllByListOrder()
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select(array('g'))
+            ->from('ApplicationSonataMediaBundle:Gallery', 'g')
+            ->orderBy('g.listOrder','ASC');
+        return $qb->getQuery()->getResult();
+    }
 } 
