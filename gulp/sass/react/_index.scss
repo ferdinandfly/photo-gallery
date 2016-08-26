@@ -21,7 +21,6 @@
 }
 
 .main-slider{
-  margin-top: 50px;
   height: 95vh;
   position: relative;
   .owl-carousel{
@@ -35,12 +34,14 @@
   }
 
   .owl-buttons{
+    cursor: pointer;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 100%;
     >div{
       background:transparent!important;
+      transform: scale(2);
     }
   }
   .owl-prev{

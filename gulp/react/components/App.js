@@ -34,7 +34,10 @@ class AppComponent extends Component {
                             <ImageDehaze />
                         </IconButton>
                         <Drawer open={this.state.open}>
-                            <AppBar title="DAIIFR" onLeftIconButtonTouchTap={this.handleCloseMenu}/>
+                            <AppBar title="DAIIFR" onLeftIconButtonTouchTap={this.handleCloseMenu}
+                                    style={{"background-color": "inherit"}}
+                                    titleStyle={{"color": "inherit"}}
+                            />
                             { categories.map((category, index)=>
                                 <Link key={index} to={`/${category.slug}`}> <MenuItem > <span
                                     className="menu-item h3 text-uppercase ">{category.name}</span></MenuItem></Link>
