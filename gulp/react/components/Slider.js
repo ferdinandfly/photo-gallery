@@ -17,20 +17,34 @@ class SliderComponent extends Component {
 
     render() {
         let { medias  } = this.props;
-        return (
-            <div>
-                <h1 className="text-center text-uppercase">{this.props.params.category}</h1>
-                <div className="main-slider">
-                    <OwlCarousel slideSpeed={300} transitionStyle={"fade"} singleItem autoPlay autoHeight navigation={true}
-                                 navigationText={ ['<i class="material-icons">navigate_before</i>','<i class="material-icons">navigate_next</i>']}>
+        if (medias.length > 1) {
+            return (
+                <div>
+                    <h1 className="text-center text-uppercase">{this.props.params.category}</h1>
+                    <div className="main-slider">
+                        <OwlCarousel slideSpeed={300} transitionStyle={"fade"} singleItem autoPlay autoHeight
+                                     navigation={true}
+                                     navigationText={ ['<i class="material-icons">navigate_before</i>','<i class="material-icons">navigate_next</i>']}>
+                            { medias.map(media =>
+                                <MediaElement media={ media.media} key={media.position}/>
+                            )}
+                        </OwlCarousel>
+                    </div>
+                    <div className="clear-fix"></div>
+                </div>
+            );
+        } else {
+            return (
+                <div>
+                    <h1 className="text-center text-uppercase">{this.props.params.category}</h1>
+                    <div className="main-slider single">
                         { medias.map(media =>
                             <MediaElement media={ media.media} key={media.position}/>
                         )}
-                    </OwlCarousel>
+                    </div>
                 </div>
-                <div className="clear-fix"></div>
-            </div>
-        );
+            );
+        }
     }
 }
 const mapState = (state) => {

@@ -1,5 +1,5 @@
-.main-dark{
-  background: linear-gradient(135deg, rgba(62,62,62,0.89) 0%, #151515 100%);
+.main-dark {
+  background: linear-gradient(135deg, rgba(62, 62, 62, 0.89) 0%, #151515 100%);
   color: #FFFFFF;
 }
 
@@ -7,7 +7,7 @@
   background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');
 }
 
-.logo-container{
+.logo-container {
   .logo {
     overflow: hidden;
     border-radius: 50%;
@@ -36,4 +36,15 @@
   -moz-transition: all .2s;
   -o-transition: all .2s;
   transition: all .2s;
+}
+
+
+.main-slider.single {
+  img {
+    width: 100%;
+  }
+}
+
+.footer{
+  display: none;
 }

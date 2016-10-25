@@ -15,7 +15,6 @@ module.exports = {
     },
     "sass" : {
         "src" : [
-            './sass/bootstrap-custom.scss',
             './sass/index.scss'
         ],
         "dest": "core.css"
